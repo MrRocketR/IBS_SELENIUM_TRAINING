@@ -12,7 +12,7 @@ public class TestConfig {
 
     private TestConfig() {
         try {
-            properties.load(new FileInputStream("application.properties"));
+            properties.load(new FileInputStream("src/main/resources/application.properties"));
         } catch (IOException e) {
             e.printStackTrace();
         }

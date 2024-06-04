@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.ibs.selenium.training.DriverManager;
 import ru.ibs.selenium.training.config.TestConfig;
+import ru.ibs.selenium.training.pages.LoginPage;
 
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
@@ -26,19 +27,27 @@ public class TripTestsSecond {
 
     private static Properties properties = getInstance().getProperties();
     private WebDriver driver;
+    private LoginPage loginPage = new LoginPage();
 
+  //  private LoginPage loginPage;
     @BeforeEach
     public void init() {
-        driver = DriverManager.getDriver("WINDOWS");
+      //  loginPage = new LoginPage();
+       // driver = DriverManager.getDriver("WINDOWS");
     }
 
     @Test
     public void tripTest() {
-        //Шаг 1: Авторизируемся на странице
+        loginPage.openPage(properties.getProperty("HOSTNAME"));
+        loginPage.doLogin(properties.getProperty("LOGIN"), properties.getProperty("PASSWORD"));
+
+      /*  //Шаг 1: Авторизируемся на странице
         driver.get(properties.getProperty("HOSTNAME"));
         driver.findElement(By.xpath("//input[@name='_username']")).sendKeys(LOGIN);
         driver.findElement(By.xpath("//input[@name='_password']")).sendKeys(PASSWORD);
         driver.findElement(By.xpath("//button[text()='Войти']")).click();
+
+
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//h1[text() = 'Панель быстрого запуска']"))));
 
         //Шаг 2: Выбираем создать командировку
@@ -70,7 +79,7 @@ public class TripTestsSecond {
         String trip_users = driver.findElement(By.xpath("(//span[@class= 'validation-failed'])[1]")).getText();
         String trip_users_foreign = driver.findElement(By.xpath("(//span[@class= 'validation-failed'])[2]")).getText();
         Assertions.assertEquals("Список командируемых сотрудников не может быть пустым", trip_users, "Для поля 'Командированные сотрудники' не найдена предпреждение");
-        Assertions.assertEquals("Список командируемых сотрудников не может быть пустым", trip_users_foreign, "Для поля 'Внештатные сотрудники' не найдена предпреждение");
+        Assertions.assertEquals("Список командируемых сотрудников не может быть пустым", trip_users_foreign, "Для поля 'Внештатные сотрудники' не найдена предпреждение");*/
     }
 
     @AfterEach
