@@ -1,6 +1,9 @@
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import ru.ibs.selenium.training.DriverManager;
 import ru.ibs.selenium.training.pages.AllTripsPage;
 import ru.ibs.selenium.training.pages.CreateTripPage;
 import ru.ibs.selenium.training.pages.LoginPage;
@@ -11,7 +14,7 @@ import java.util.Properties;
 import static ru.ibs.selenium.training.config.TestConfig.getInstance;
 
 @ExtendWith(DriverExtension.class)
-public class TripTestsSecond {
+public class TripSecondTest {
 
     private static Properties properties = getInstance().getProperties();
     private LoginPage loginPage = new LoginPage();
@@ -23,7 +26,6 @@ public class TripTestsSecond {
     public void tripTest() {
         //Шаг 1: Авторизируемся на странице
         loginPage.openPage(properties.getProperty("HOSTNAME"));
-        String prop = properties.getProperty("LOGIN");
         loginPage.inputLoginAndPassword(properties.getProperty("LOGIN"), properties.getProperty("PASSWORD"));
         loginPage.clickSubmitBtn();
         //Шаг 2: Выбираем создать командировку
