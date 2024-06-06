@@ -3,6 +3,7 @@ package ru.ibs.selenium.training.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class CreateTripPage extends BasePage {
@@ -32,8 +33,9 @@ public class CreateTripPage extends BasePage {
     @FindBy(xpath = "//button[contains(text(), 'Сохранить и закрыть')]")
     WebElement saveAndReturnBtn;
 
-    @FindBy(xpath = "//span[@class= 'validation-failed']")
-    WebElement validationFailedWarning;
+    public CreateTripPage() {
+        PageFactory.initElements(driver, this);
+    }
 
     private String validationFailedTextPattern = "(//span[@class= 'validation-failed'])[%s]";
 
@@ -84,7 +86,7 @@ public class CreateTripPage extends BasePage {
     }
 
     public void checkValidationWarning() {
-        wait.until(ExpectedConditions.visibilityOf(validationFailedWarning));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class= 'validation-failed']")));
     }
 
     public String getTripUsersValidationText() {

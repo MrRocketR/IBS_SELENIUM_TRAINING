@@ -1,20 +1,12 @@
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.ibs.selenium.training.pages.AllTripsPage;
 import ru.ibs.selenium.training.pages.CreateTripPage;
 import ru.ibs.selenium.training.pages.LoginPage;
 import ru.ibs.selenium.training.pages.QuickLaunchBarPage;
 
 import java.util.Properties;
-import java.util.concurrent.TimeUnit;
 
 import static ru.ibs.selenium.training.config.TestConfig.getInstance;
 
@@ -26,6 +18,7 @@ public class TripTestsSecond {
     private QuickLaunchBarPage quickLaunchBarPage = new QuickLaunchBarPage();
     private AllTripsPage allTripsPage = new AllTripsPage();
     private CreateTripPage createTripPage = new CreateTripPage();
+
 
     @Test
     public void tripTest() {
@@ -55,6 +48,6 @@ public class TripTestsSecond {
         String trip_users = createTripPage.getTripUsersValidationText();
         String trip_users_foreign = createTripPage.getTripUsersForeignValidationText();
         Assertions.assertEquals("Список командируемых сотрудников не может быть пустым", trip_users, "Для поля 'Командированные сотрудники' не найдена предпреждение");
-        Assertions.assertEquals("Список командируемых внештатных сотрудников не может быть пустым", trip_users_foreign, "Для поля 'Внештатные сотрудники' не найдена предпреждение");
+        Assertions.assertEquals("Список командируемых сотрудников не может быть пустым", trip_users_foreign, "Для поля 'Внештатные сотрудники' не найдена предпреждение");
     }
 }

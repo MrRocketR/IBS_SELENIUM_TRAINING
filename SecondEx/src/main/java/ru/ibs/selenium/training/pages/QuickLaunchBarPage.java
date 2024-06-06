@@ -1,11 +1,11 @@
 package ru.ibs.selenium.training.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class QuickLaunchBarPage extends BasePage{
+public class QuickLaunchBarPage extends BasePage {
 
     @FindBy(xpath = "//h1[text() = 'Панель быстрого запуска']")
     WebElement quickLaunchTitle;
@@ -13,6 +13,10 @@ public class QuickLaunchBarPage extends BasePage{
     WebElement expensesList;
     @FindBy(xpath = "//ul[contains(@class,'ropdown-menu menu_level_1')]//a/span[text()='Командировки']/..")
     WebElement tripsLink;
+
+    public QuickLaunchBarPage() {
+        PageFactory.initElements(driver, this);
+    }
 
 
     public void checkQuickLaunchTitle() {
