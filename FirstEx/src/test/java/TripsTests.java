@@ -51,7 +51,7 @@ public class TripsTests {
         driver.findElement(By.xpath("//div/a[@id = 'company-selector-show']")).click();
         driver.findElement(By.xpath("//select[@data-name = 'field__transport']/option[text()='Метро']")).click();
         driver.findElement(By.xpath("//select[contains(@id, 'crm_business_trip_class')]/option[text()='Маркетинговая']")).click();
-        driver.findElement(By.xpath(" //input[@type='checkbox']")).click();
+        driver.findElement(By.xpath("//input[@type='checkbox' and contains(@id, 'business_trip_tasks_1')]")).click();
         driver.findElement(By.xpath(" //input[contains(@id, 'business_trip_arrivalCity')]")).sendKeys("Россия, Магадан");
 
         driver.findElement(By.xpath("//input[@placeholder='Укажите дату' and contains(@id, 'business_trip_departureDatePlan')]")).click();
@@ -60,7 +60,7 @@ public class TripsTests {
         driver.findElement(By.xpath("//table/tbody/tr/td/a[text()='26']")).click();
         //Шаг 4: Нажать 'Сохранить и закрыть'
         driver.findElement(By.xpath("//button[contains(text(), 'Сохранить и закрыть')]")).click();
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//span[@class= 'validation-failed']"))));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class= 'validation-failed']")));
         String trip_users = driver.findElement(By.xpath("(//span[@class= 'validation-failed'])[1]")).getText();
         String trip_users_foreign = driver.findElement(By.xpath("(//span[@class= 'validation-failed'])[2]")).getText();
         Assertions.assertEquals("Список командируемых сотрудников не может быть пустым", trip_users, "Для поля 'Командированные сотрудники' не найдена предпреждение");
