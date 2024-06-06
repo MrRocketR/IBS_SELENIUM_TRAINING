@@ -1,5 +1,6 @@
 package ru.ibs.selenium.training.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -25,7 +26,8 @@ public class QuickLaunchBarPage extends BasePage {
 
     public void clickTripsFromList() {
         expensesList.click();
-        wait.until(ExpectedConditions.visibilityOf(tripsLink));
+       wait.until(ExpectedConditions.visibilityOf(tripsLink));
+       // wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//ul[contains(@class,'ropdown-menu menu_level_1')]//a/span[text()='Командировки']/..")));
         tripsLink.click();
     }
 }

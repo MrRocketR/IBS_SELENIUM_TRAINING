@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
-public class TripsTests {
+public class TripsTest {
 
     private WebDriver driver;
     private Wait<WebDriver> wait;

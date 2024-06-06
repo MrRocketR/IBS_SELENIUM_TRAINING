@@ -11,14 +11,13 @@ import java.util.Properties;
 import static ru.ibs.selenium.training.config.TestConfig.getInstance;
 
 @ExtendWith(DriverExtension.class)
-public class TripTestsSecond {
+public class CreateTripTest {
 
     private static Properties properties = getInstance().getProperties();
     private LoginPage loginPage = new LoginPage();
     private QuickLaunchBarPage quickLaunchBarPage = new QuickLaunchBarPage();
     private AllTripsPage allTripsPage = new AllTripsPage();
     private CreateTripPage createTripPage = new CreateTripPage();
-
 
     @Test
     public void tripTest() {
