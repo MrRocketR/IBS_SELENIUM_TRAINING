@@ -7,15 +7,12 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>secondEx</name>
     <properties>
-        <!-- Encoding -->
         <encoding.type>UTF-8</encoding.type>
-        <!-- Java version -->
         <java.version>11</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <!-- properties for test engine -->
-        <maven-compiler-plugin.version>3.12.1</maven-compiler-plugin.version>
-        <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
+        <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
+        <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
     </properties>
     <dependencies>
         <dependency>
@@ -61,12 +58,9 @@
                         -Xmx1024m
                         -Dfile.encoding=${encoding.type}
                     </argLine>
-                    <systemProperties>
-                        <property>
-                            <name>junit.jupiter.extensions.autodetection.enabled</name>
-                            <value>true</value>
-                        </property>
-                    </systemProperties>
+                    <systemPropertyVariables>
+                        <junit.jupiter.extensions.autodetection.enabled>true</junit.jupiter.extensions.autodetection.enabled>
+                    </systemPropertyVariables>
                 </configuration>
             </plugin>
         </plugins>
