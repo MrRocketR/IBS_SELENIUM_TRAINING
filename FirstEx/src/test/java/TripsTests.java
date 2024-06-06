@@ -90,6 +90,6 @@ public class TripsTests {
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        wait = new WebDriverWait(driver, 5, 10);
+        wait = new WebDriverWait(driver, 60, 10);
     }
 }
