@@ -1,7 +1,6 @@
 package ru.ibs.selenium.training.steps;
 
 import io.cucumber.java.ru.Допустим;
-import io.cucumber.java.ru.И;
 import org.junit.Assert;
 import ru.ibs.selenium.training.config.TestConfig;
 import ru.ibs.selenium.training.managers.PageManager;
@@ -9,21 +8,21 @@ import ru.ibs.selenium.training.managers.PageManager;
 import java.util.Map;
 import java.util.Properties;
 
+public class Base {
 
-public class BaseSteps {
     private static Properties properties = TestConfig.getInstance().getProperties();
     private static PageManager pageManager = PageManager.getPageManager();
 
-
     @Допустим("Авторизация на странице корпоративного портала со стандартным паролем")
-    protected void baseAuth() {
+    public void авторизация_на_странице_корпоративного_портала_со_стандартным_паролем() {
         pageManager.getLoginPage().openPage(properties.getProperty("HOSTNAME"));
         pageManager.getLoginPage().inputLoginAndPassword(properties.getProperty("LOGIN"), properties.getProperty("PASSWORD"));
         pageManager.getLoginPage().clickSubmitBtn();
     }
 
-    @И("Выбор меню создать командировку")
-    protected void pickCreateTrip() {
+
+    @Допустим("Выбор меню создать командировку")
+    public void выбор_меню_создать_командировку() {
         pageManager.getQuickLaunchBarPage().checkQuickLaunchTitle();
         pageManager.getQuickLaunchBarPage().clickTripsFromList();
         pageManager.getAllTripsPage().checkCreateTripLink();
@@ -31,8 +30,8 @@ public class BaseSteps {
         pageManager.geCreateTripPage().checkCreateTripPage();
     }
 
-    @И("Оформение командировки с стандартными тестовыми данными:")
-    protected void createDefaultTrip(Map<String, String> arg) {
+    @Допустим("Оформение командировки с стандартными тестовыми данными:")
+    public void оформение_командировки_с_стандартными_тестовыми_данными(Map<String, String> arg) {
         pageManager.geCreateTripPage().selectDepartment(arg.get("Department"));
         pageManager.geCreateTripPage().inputCompanyName(arg.get("CompanyName"));
         pageManager.geCreateTripPage().clickPickOrganizationFromList();
@@ -45,8 +44,8 @@ public class BaseSteps {
         pageManager.geCreateTripPage().clickSaveAndReturnBtn();
     }
 
-    @И("Проверка ошибки на экране")
-    protected void checkErrors() {
+    @Допустим("Проверка ошибки на экране")
+    public void проверка_ошибки_на_экране() {
         pageManager.geCreateTripPage().checkValidationWarning();
         String trip_users = pageManager.geCreateTripPage().getTripUsersValidationText();
         String trip_users_foreign = pageManager.geCreateTripPage().getTripUsersForeignValidationText();
