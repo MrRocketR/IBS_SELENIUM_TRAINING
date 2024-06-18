@@ -15,9 +15,6 @@ import java.util.Properties;
 
 public class Pure {
 
-    private static Properties properties = TestConfig.getInstance().getProperties();
-    private static PageManager pageManager = PageManager.getPageManager();
-
     @Test
     public void t1() {
         WebDriver driver = DriverManager.getDriver();

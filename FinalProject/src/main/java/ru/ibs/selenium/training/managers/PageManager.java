@@ -1,9 +1,6 @@
 package ru.ibs.selenium.training.managers;
 
-import ru.ibs.selenium.training.pages.AllTripsPage;
-import ru.ibs.selenium.training.pages.CreateTripPage;
-import ru.ibs.selenium.training.pages.LoginPage;
-import ru.ibs.selenium.training.pages.QuickLaunchBarPage;
+import ru.ibs.selenium.training.pages.*;
 
 public class PageManager {
     /**
@@ -11,10 +8,8 @@ public class PageManager {
      */
     private static PageManager pageManager;
 
-    private static AllTripsPage allTripsPage;
-    private static CreateTripPage createTripPage;
-    private static LoginPage loginPage;
-    private static QuickLaunchBarPage quickLaunchBarPage;
+    private static CatalogPage catalogPage;
+    private static MainPage mainPage;
 
     /**
      * Конструктор специально был объявлен как private (singleton паттерн)
@@ -37,50 +32,26 @@ public class PageManager {
     }
 
     /**
-     * Ленивая инициализация {@link AllTripsPage}
+     * Ленивая инициализация {@link CatalogPage}
      *
-     * @return AllTripsPage
+     * @return CatalogPage
      */
-    public AllTripsPage getAllTripsPage() {
-        if (allTripsPage == null) {
-            allTripsPage = new AllTripsPage();
+    public CatalogPage getCatalogPage() {
+        if (catalogPage == null) {
+            catalogPage = new CatalogPage();
         }
-        return allTripsPage;
+        return catalogPage;
     }
 
     /**
-     * Ленивая инициализация {@link CreateTripPage}
+     * Ленивая инициализация {@link MainPage}
      *
      * @return InsurancePage
      */
-    public CreateTripPage geCreateTripPage() {
-        if (createTripPage == null) {
-            createTripPage = new CreateTripPage();
+    public MainPage geMainPage() {
+        if (mainPage == null) {
+            mainPage = new MainPage();
         }
-        return createTripPage;
-    }
-
-    /**
-     * Ленивая инициализация {@link LoginPage}
-     *
-     * @return LoginPage
-     */
-    public LoginPage getLoginPage() {
-        if (loginPage == null) {
-            loginPage = new LoginPage();
-        }
-        return loginPage;
-    }
-
-    /**
-     * Ленивая инициализация {@link QuickLaunchBarPage}
-     *
-     * @return QuickLaunchBarPage
-     */
-    public QuickLaunchBarPage getQuickLaunchBarPage() {
-        if (quickLaunchBarPage == null) {
-            quickLaunchBarPage = new QuickLaunchBarPage();
-        }
-        return quickLaunchBarPage;
+        return mainPage;
     }
 }
