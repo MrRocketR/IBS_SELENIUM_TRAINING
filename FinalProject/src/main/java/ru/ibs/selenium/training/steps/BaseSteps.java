@@ -2,16 +2,11 @@ package ru.ibs.selenium.training.steps;
 
 import io.cucumber.java.ru.Допустим;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import ru.ibs.selenium.training.config.TestConfig;
-import ru.ibs.selenium.training.managers.DriverManager;
 import ru.ibs.selenium.training.managers.PageManager;
-import ru.ibs.selenium.training.pages.MainPage;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Properties;
 
 public class BaseSteps {
@@ -38,7 +33,6 @@ public class BaseSteps {
         pageManager.getCatalogPage().filterByFirmAndCheck(firm);
     }
 
-
     @Допустим("Проверяем, что на странице отображается 24 позиции")
     public void if24ElementsOnPageShow() {
         pageManager.getCatalogPage().waitUntilProductsOnPageShow();
@@ -55,7 +49,7 @@ public class BaseSteps {
         int searchedSize = popularProduct.size();
         Assert.assertEquals("Найдено больше 1 элемента", 1, searchedSize);
         String actualProduct = popularProduct.get(0).getText();
-       Assert.assertTrue("Неверное наименование товара", firstProduct.contains(actualProduct));
+        Assert.assertTrue("Неверное наименование товара", firstProduct.contains(actualProduct));
     }
 
 }
